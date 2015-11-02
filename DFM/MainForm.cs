@@ -42,7 +42,7 @@ namespace DFM
 			string[] sarry = s.Split("\r\n".ToCharArray(),StringSplitOptions.RemoveEmptyEntries);
 			foreach(string str in sarry)
 			{
-				byte[] dots = String2Dot(str,font);
+				byte[] dots = String2Dot(str.Trim(),font);
 				SaveBin(dots);
 			}
 		}

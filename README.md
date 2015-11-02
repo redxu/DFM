@@ -3,6 +3,7 @@ EPSON Printer Dot Font Maker
 
 EPSON类打印机点阵字库生成工具
 (参考指令:1b 26 03 xx xx ...)
+
 EPSON类打印机可以使用约100个自定义点阵字库(大小12x24或9x17),
 本工具可以自动生成12x24大小的点阵字库
 

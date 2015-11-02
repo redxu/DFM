@@ -48,8 +48,11 @@ namespace DFM
 			this.textBox1.Location = new System.Drawing.Point(29, 23);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
+			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.textBox1.Size = new System.Drawing.Size(278, 125);
 			this.textBox1.TabIndex = 0;
+			this.textBox1.Text = "ড্র নং\r\nড্র তারিখ\r\nটার্মিনাল নং\r\nসেলস টাইম\r\nগ্রূপ\r\nস্টান্ডার্ড\r\nকম্বিনেশন\r\nমুল্য\r" +
+			"\nতুমি দান করেছো\r\nজন কল্যানারথে";
 			// 
 			// btn_make
 			// 
