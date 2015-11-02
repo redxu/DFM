@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.3
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DFM", "DFM\DFM.csproj", "{94CDF383-C1D3-485B-8B08-A9A473B82829}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94CDF383-C1D3-485B-8B08-A9A473B82829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94CDF383-C1D3-485B-8B08-A9A473B82829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94CDF383-C1D3-485B-8B08-A9A473B82829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94CDF383-C1D3-485B-8B08-A9A473B82829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+EndGlobal
