@@ -154,6 +154,7 @@ namespace DFM
 				}
 			}
 			
+			bitmap.Save(str+".png");
 			bitmap.Dispose();
 			
 			//auto generote code.
@@ -185,6 +186,86 @@ namespace DFM
 			}
 			
 			return code;
+		}
+		
+		/// <summary>
+		/// 美工修图后
+		/// </summary>
+		/// <param name="str"></param>
+		/// <param name="font"></param>
+		/// <returns></returns>
+		Byte[] Image2Dot(string str,Font font)
+		{
+			Bitmap bitmap = (Bitmap)Bitmap.FromFile(str+".png");
+			//save offset
+			SaveOffset(str,bitmap.Width);
+			
+			//to bits.
+			int w = bitmap.Width;
+			int h = bitmap.Height;
+			
+			Byte[,] bits = new byte[w,h];
+			bits.Initialize();
+			for(int i=0;i<w;i++)
+			{
+				for(int j=0;j<h;j++)
+				{
+					Color c = bitmap.GetPixel(i,j);
+					if(c.R >= 250 && c.G >= 250 && c.B >= 250)
+					{
+						bits[i,j] = 0;
+					}
+					else
+					{
+						bits[i,j] = 1;
+					}
+				}
+			}
+			
+			bitmap.Dispose();
+			
+			//auto generote code.
+			//up->down then left->right little ending
+			Byte[] code = new Byte[w*(h/8)];
+			int codeindex = 0;
+			int tmpcode = 0;
+			for(int i=0;i<w;i++)
+			{
+				for(int j=0;j<(h/8);j++)
+				{
+					tmpcode = bits[i,j*8] << 7;
+					tmpcode |= bits[i,j*8+1] << 6;
+					tmpcode |= bits[i,j*8+2] << 5;
+					tmpcode |= bits[i,j*8+3] << 4;
+					tmpcode |= bits[i,j*8+4] << 3;
+					tmpcode |= bits[i,j*8+5] << 2;
+					tmpcode |= bits[i,j*8+6] << 1;
+					tmpcode |= bits[i,j*8+7];
+					
+					code[codeindex++] = (Byte)tmpcode;
+					Trace.Write(string.Format("0x{0}, ",tmpcode.ToString("X2")));
+
+					if((codeindex) % 12 == 0)
+					{
+						Trace.WriteLine("");
+					}
+				}
+			}
+			
+			return code;			
+		}
+		
+		void Btn_fixClick(object sender, EventArgs e)
+		{
+			EnvInit();
+			Font font = new Font("Vrinda",17);
+			string s = this.textBox1.Text;
+			string[] sarry = s.Split("\r\n".ToCharArray(),StringSplitOptions.RemoveEmptyEntries);
+			foreach(string str in sarry)
+			{
+				byte[] dots = Image2Dot(str.Trim(),font);
+				SaveBin(dots);
+			}			
 		}
 	}
 }
